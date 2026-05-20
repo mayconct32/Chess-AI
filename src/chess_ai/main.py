@@ -145,9 +145,18 @@ def initialize_database() -> Chroma:
 
 
 def get_similarity_chunk(message: str, db: Chroma) -> str:
-    """Retrieve relevant document chunks from the vector database using similarity search."""
+    """
+    Retrieve relevant document chunks from the vector 
+    database using similarity search."""
     results = db.similarity_search_with_relevance_scores(message, k=SIMILARITY_SEARCH_K)
-    result_content = [doc[0].page_content for doc in results]
+    # result_content = [
+    #     doc[0].page_content if doc[-1] >= 0.60 else None for doc in results
+    #     ]
+    result_content = []
+    for doc in results:
+        #if score >= 0.60
+        if doc[-1] >= 0.60:
+            result_content.append(doc[0].page_content)
     information = "\n\n----\n\n".join(result_content)
     return information
 
