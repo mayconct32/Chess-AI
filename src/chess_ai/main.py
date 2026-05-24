@@ -379,7 +379,7 @@ def interactive_loop(db: Chroma, engine: chess_engine.SimpleEngine, model: ChatG
             print_message("\n👋 Goodbye!", "green")
             break
         except Exception as e:
-            print_message(f"\n❌ Error: {e}", "red")
+            print_message(f"\n❗Error: {e}", "red")
             logger.error(f"Error in interactive loop: {e}")
 
 
