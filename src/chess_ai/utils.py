@@ -1,10 +1,6 @@
-"""Utility functions for ChessAI application.
-
-Contains helper functions for colors, paths, and other common operations.
-"""
-
 import os
 from typing import Dict
+
 
 # ANSI color codes for terminal output
 ANSI_COLORS: Dict[str, str] = {
